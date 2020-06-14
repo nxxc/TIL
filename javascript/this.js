@@ -7,5 +7,6 @@ let kim = {
   },
 };
 
-// this가 속해있는 methods 가 속해있는 객체를 가르키는 약속
+// this는 속해있는 methods 가 속해있는 객체를 가르키는 약속
+
 console.log(kim.sum());
