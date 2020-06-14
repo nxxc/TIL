@@ -96,3 +96,5 @@ const fruit2 = { color: 'blue', size: 'big' };
 const mixed = Object.assign({}, fruit1, fruit2); // 뒤에 있는 프로퍼티들이 앞에있는 것들을 덮어씌움
 console.log(mixed.color); //blue
 console.log(mixed.size);
+
+console.log(array.constructor);

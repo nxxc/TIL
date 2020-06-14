@@ -82,5 +82,5 @@ console.log(fruits.includes('🥥')); // false
 console.clear();
 fruits.push('🍎');
 console.log(fruits);
-console.log(fruits.indexOf('🍎'));
-console.log(fruits.lastIndexOf('🍎'));
+console.log(fruits.indexOf('🍎')); // 0 첫번째 사과 인덱스
+console.log(fruits.lastIndexOf('🍎')); // 5 마지막 사과 인덱스
