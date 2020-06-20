@@ -32,3 +32,12 @@ base-line : 가장 큰 height 요소 기준으로 위 아래 정렬
 일단 static으로 그리고 그 다음 이동
 
 relative static 요소가 섞여있으면 relative적용된 요소가 앞으로 옴
+
+>OverFlow
+
+hidden : 영역넘어가면 안보임 | scroll : 영역 넘어가면 scroll
++ new BFC
++ First Line Box Bound
+
+Float으로 하면 Line Box 생김 overflow hidden 은 linebox따라 그려짐
+
