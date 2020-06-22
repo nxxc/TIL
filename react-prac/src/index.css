@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#screen {
+  width: 200px;
+  height: 200px;
+  user-select: none;
+  text-align: center;
+}
+
+#screen.waiting {
+  background-color: aqua;
+}
+
+#screen.ready {
+  background-color: red;
+  color: white;
+}
+
+#screen.now {
+  background-color: greenyellow;
+}
