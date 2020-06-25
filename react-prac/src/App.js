@@ -6,7 +6,8 @@ import React from 'react';
 // import Check from './FunctionalCheck';
 // import Lotto from './Lotto';
 // import Lotto from './functionalLotto';
-import TicTacToe from './TTT/TicTacToe';
+// import TicTacToe from './TTT/TicTacToe';
+import MineSerch from './MineSearch/MineSearch';
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
       <WordRelay />
       <Check />
       <Lotto /> */}
-      <TicTacToe />
+      {/* <TicTacToe /> */}
+      <MineSerch />
     </>
   );
 }
