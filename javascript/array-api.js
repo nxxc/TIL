@@ -91,3 +91,8 @@ console.clear();
     .join();
   console.log(result);
 }
+
+const arr1 = [3, 4, 56, 1, 2, 4, 6, 78];
+
+let arr2 = arr1.reduce((ac, cur) => (ac > cur ? ac : cur));
+console.log(arr2);
