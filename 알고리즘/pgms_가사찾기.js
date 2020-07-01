@@ -1,6 +1,5 @@
 const words = ['frodo', 'front', 'frost', 'frozen', 'frame', 'kakao'];
 const queries = ['fro??', '????o', 'fr???', 'fro???', 'pro?'];
-
 function solution(words, queries) {
   const startRe = /^\w/;
   let answer = Array(queries.length).fill(0);
