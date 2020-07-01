@@ -16,8 +16,6 @@ function solution(s) {
     ma.has(s) ? ma.set(s, ma.get(s) + 1) : ma.set(s, 1);
   });
 
-  //   s.forEach(s=> {ma.has(s)? ma.set(s,ma.get(s)+1) : ma.set(s,1)})
-
   [...ma] // Map object를 배열로
     .sort((a, b) => b[1] - a[1]) // 갯수 기준으로 정렬
     .forEach((v) => answer.push(parseInt(v[0]))); // 갯수 많은 순으로 answer에 push
