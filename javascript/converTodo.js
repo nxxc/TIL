@@ -16,16 +16,16 @@ let todos = [
   { id: idgenerator(), text: 'ios공부하기', state: 'todo', tag: [] },
   { id: idgenerator(), text: '', state: 'doing', tag: [] },
 ];
+
+function filtering(list, state) {
+  const filtedList = list.filter((v) => v.state === state).map((v) => v.id);
+  return filtedList;
+}
+
 function showCurrent() {
-  const todoList = todos
-    .filter((todo) => todo.state === stateList[0])
-    .map((v) => v.id);
-  const doingList = todos
-    .filter((todo) => todo.state === stateList[1])
-    .map((v) => v.id);
-  const doneList = todos
-    .filter((todo) => todo.state === stateList[2])
-    .map((v) => v.id);
+  const todoList = filtering(todos, stateList[0]);
+  const doingList = filtering(todos, stateList[1]);
+  const doneList = filtering(todos, stateList[2]);
   return console.log(
     `현재상태 : todo: [${todoList}], doing :[${doingList}], done: [${doneList}]`
   );
@@ -91,7 +91,7 @@ function init() {
       showListByState(state);
     } else if (order[0] === orderList[1]) {
       addTodo(order[1], order[2]);
-    } else if (order[0] === orderList[2]) {
+    } else if (order[0] === orderList[2] && order[2] != undefined) {
       setTimeout(() => updateTodo(order[1], order[2]), 2000);
     } else if (order[0] === orderList[3]) {
       delelteTodo(order[1]);
