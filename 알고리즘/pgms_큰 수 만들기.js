@@ -19,7 +19,7 @@ function solution(number, k) {
     }
   }
 
-  return number2.join().replace(/,/g, '');
+  return number2.join('');
 }
 
 // 큰 수 만들기 v1
@@ -47,7 +47,7 @@ function solution(number, k) {
     }
   }
 
-  return number2.join().replace(/,/g, '');
+  return number2.join('');
 }
 
 // 큰 수 만들기 v2
@@ -58,3 +58,32 @@ function solution(number, k) {
 // }
 // 이 부분 추가 한숫자로만 이루어진 경우나 내림차순으로 되어있을경우 추가 => 테스트케이스 12번 해결
 // 아직 테스트케이스 10번은 시간초과
+
+function solution(number, k) {
+  let number2 = [...number];
+  let count = 0;
+  let idx = 0;
+  let se = new Set(number2);
+  if (se.length === 1) {
+    number2.splice(0, k);
+    return number2.join().replace(/,/g, '');
+  }
+  while (1) {
+    if (count === k) break;
+
+    if (idx === number2.length - 1) {
+      number2.splice(number2.length - 1, 1);
+      count++;
+      idx = 0;
+    }
+    if (number2[idx] < number2[idx + 1]) {
+      number2.splice(idx, 1);
+      count++;
+      idx = 0;
+    } else {
+      idx++;
+    }
+  }
+
+  return number2.join('');
+}
