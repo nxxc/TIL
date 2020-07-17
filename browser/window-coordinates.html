@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coordinates</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: black;
+      }
+      .contents {
+        display: flex;
+        flex-direction: column;
+      }
+      .content {
+        width: 250px;
+        height: 250px;
+        background-color: beige;
+        margin-bottom: 4px;
+      }
+      .buttons {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+      }
+      .special {
+        background-color: burlywood;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="buttons">
+      <button class="by">scroll by 100px</button>
+      <button class="to">scroll to 100px</button>
+      <button class="tospecial">scroll to special</button>
+    </div>
+    <div class="contents">
+      <div class="content"></div>
+      <div class="content"></div>
+      <div class="content"></div>
+      <div class="content"></div>
+      <div class="content"></div>
+      <div class="content"></div>
+      <div class="content"></div>
+      <div class="content special"></div>
+      <div class="content"></div>
+      <div class="content"></div>
+    </div>
+
+    <script>
+      const contents = document.querySelectorAll('.content');
+      contents.forEach((content) => {
+        content.onclick = (e) => {
+          console.log(content.getBoundingClientRect());
+          console.log(`e.clientX: ${e.clientX}`);
+          console.log(`e.clientY: ${e.clientY}`);
+          console.log(`e.pageX:${e.pageX}`);
+          console.log(`e.pageY:${e.pageY}`);
+        };
+      });
+
+      const button1 = document.querySelector('.by');
+      button1.addEventListener('click', () => {
+        window.scrollBy({
+          top: 100,
+          behavior: 'smooth',
+        });
+      });
+      const button2 = document.querySelector('.to');
+      button2.addEventListener('click', () => {
+        window.scrollTo({
+          top: 100,
+          behavior: 'smooth',
+        });
+      });
+      const button3 = document.querySelector('.tospecial');
+      const special = document.querySelector('.special');
+      button3.addEventListener('click', () => {
+        special.scrollIntoView({
+          behavior: 'smooth',
+        });
+      });
+    </script>
+  </body>
+</html>
