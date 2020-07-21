@@ -1,6 +1,7 @@
 html,
 body {
   background-color: black;
+  margin: 0;
 }
 
 .vertical {
@@ -8,7 +9,7 @@ body {
   height: 100%;
   width: 1px;
   background-color: white;
-  left: 50%;
+  /* left: 50%; */
 }
 
 .horizon {
@@ -16,21 +17,22 @@ body {
   height: 1px;
   width: 100%;
   background-color: white;
-  top: 50%;
+  /* top: 50%; */
 }
 
 .image {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  /* top: 50%; */
+  /* left: 50%; */
   transform: translate(-50%, -50%);
 }
 
 .coordinates {
   position: absolute;
   color: white;
-  top: 50%;
-  left: 50%;
+  /* top: 50%; */
+  /* left: 50%; */
   font-size: 38px;
-  transform: translate(20px, 20px);
+  margin: 20px;
+  /* transform: translate(20px, 20px); */
 }

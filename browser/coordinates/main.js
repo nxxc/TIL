@@ -3,12 +3,27 @@ const horizon = document.querySelector('.horizon');
 const coordinates = document.querySelector('.coordinates');
 const image = document.querySelector('.image');
 
-document.addEventListener('mousemove', (e) => {
-  vertical.style.left = `${e.clientX}px`;
-  horizon.style.top = `${e.clientY}px`;
-  coordinates.innerHTML = `${e.clientX}px , ${e.clientY}px`;
-  coordinates.style.left = `${e.clientX}px`;
-  coordinates.style.top = `${e.clientY}px`;
-  image.style.left = `${e.clientX}px`;
-  image.style.top = `${e.clientY}px`;
+addEventListener('load', () => {
+  const imageRect = image.getBoundingClientRect();
+  const imageHalfWidth = imageRect.width / 2;
+  const imageHalfHeight = imageRect.height / 2;
+
+  document.addEventListener('mousemove', (e) => {
+    const x = e.clientX;
+    const y = e.clientY;
+
+    vertical.style.transform = `translateX(${x}px)`;
+    horizon.style.transform = `translateY(${y}px)`;
+
+    image.style.transform = `translate(${x - imageHalfWidth}px, ${
+      y - imageHalfHeight
+    }px)`;
+
+    coordinates.style.transform = `translate(${x}px, ${y}px)`;
+
+    coordinates.innerHTML = `${x}px , ${y}px`;
+  });
 });
+
+//모든 리소스가 받아진 후에 이미지 크기 받아와서
+//transform 활용해서 성능개선
