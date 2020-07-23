@@ -22,6 +22,9 @@ html {
     rgba(238, 174, 202, 1) 0%,
     rgba(148, 187, 233, 1) 100%
   );
+  left: 50%;
+  margin-top: 20px;
+  transform: translate(-50%, 0);
 }
 
 .title {
@@ -56,9 +59,10 @@ html {
 }
 
 li {
+  font-family: Arial, Helvetica, sans-serif;
   list-style: none;
   width: 100%;
-  margin-bottom: 5px;
+  margin-top: 8px;
   text-align: start;
   margin-left: 10px;
 }

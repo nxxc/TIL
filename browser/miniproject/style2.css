@@ -1,0 +1,123 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: lightgray;
+  text-align: center;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+li {
+  list-style: none;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+
+.list {
+  width: 400px;
+  margin: auto;
+  border-radius: 20px;
+  background-color: rgb(239, 241, 243);
+  -webkit-box-shadow: 11px 10px 16px -6px rgba(0, 0, 0, 0.65);
+  -moz-box-shadow: 11px 10px 16px -6px rgba(0, 0, 0, 0.65);
+  box-shadow: 11px 10px 16px -6px rgba(0, 0, 0, 0.65);
+}
+
+.header {
+  height: 48px;
+  font-size: 28px;
+  color: white;
+  background: #6190e8; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #a7bfe8,
+    #6190e8
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #a7bfe8,
+    #6190e8
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  border-radius: 20px 20px 0 0;
+  padding: 8px;
+}
+
+.items {
+  height: 500px;
+  overflow-y: auto;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 32px;
+  font-size: 16px;
+}
+
+.item__divider {
+  width: 90%;
+  height: 1px;
+  background-color: lightgray;
+  margin: auto;
+}
+
+.item__delete {
+  font-size: 16px;
+  transition: all 200ms ease-in;
+  cursor: pointer;
+}
+
+.item__delete :hover {
+  color: red;
+  transform: scale(1.1);
+}
+
+.footer {
+  background: #6190e8; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #a7bfe8,
+    #6190e8
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #a7bfe8,
+    #6190e8
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  border-radius: 0 0 20px 20px;
+}
+
+.footer__input {
+  width: 100%;
+  outline: none;
+  border: none;
+  height: 48px;
+  font-size: 24px;
+  padding: 0 16px;
+}
+
+.footer__button {
+  background-color: black;
+  width: 48px;
+  height: 48px;
+  color: white;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 50%;
+  font-size: 28px;
+}
+
+.footer__button :hover {
+  transform: scale(1.1);
+}
