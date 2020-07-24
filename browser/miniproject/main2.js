@@ -13,6 +13,9 @@ function onAdd() {
   const item = createItem(text);
   // 3.items 컨테이너 안에 만든것들 추가
   items.append(item);
+  item.scrollIntoView({
+    block: 'center',
+  });
   // 4.인풋 초기화 & 포커스
   input.value = '';
   input.focus();
@@ -21,7 +24,11 @@ function onAdd() {
 function createItem(text) {
   const itemRow = document.createElement('li');
   itemRow.setAttribute('class', 'item__row');
-
+  itemRow.addEventListener('click', (e) => {
+    if (e.target.tagName === 'I') {
+      items.removeChild(itemRow);
+    }
+  });
   const item = document.createElement('div');
   item.setAttribute('class', 'item');
 
@@ -31,9 +38,6 @@ function createItem(text) {
   const deletBtn = document.createElement('button');
   deletBtn.setAttribute('class', 'item__delete');
   deletBtn.innerHTML = `<i class="fas fa-trash-alt"></i>`;
-  deletBtn.addEventListener('click', () => {
-    items.removeChild(itemRow);
-  });
 
   const divider = document.createElement('div');
   divider.setAttribute('class', 'item__divider');
