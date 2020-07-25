@@ -20,34 +20,46 @@ function onAdd() {
   input.value = '';
   input.focus();
 }
-
+let id = 0;
 function createItem(text) {
   const itemRow = document.createElement('li');
   itemRow.setAttribute('class', 'item__row');
+  itemRow.setAttribute('data-id', id);
   itemRow.addEventListener('click', (e) => {
-    if (e.target.tagName === 'I') {
-      items.removeChild(itemRow);
+    if (itemRow.dataset.id) {
+      itemRow.remove();
     }
   });
-  const item = document.createElement('div');
-  item.setAttribute('class', 'item');
 
-  const name = document.createElement('span');
-  name.innerText = text;
+  itemRow.innerHTML = `
+  <div class="item">
+    <span class="item__name">${text}</span >
+    <button class="item__delete">
+      <i class="fas fa-trash-alt"></i>
+    </button>
+  </div>
+  <div class="item__divider"></div>
+  `;
+  id++;
+  // const item = document.createElement('div');
+  // item.setAttribute('class', 'item');
 
-  const deletBtn = document.createElement('button');
-  deletBtn.setAttribute('class', 'item__delete');
-  deletBtn.innerHTML = `<i class="fas fa-trash-alt"></i>`;
+  // const name = document.createElement('span');
+  // name.innerText = text;
 
-  const divider = document.createElement('div');
-  divider.setAttribute('class', 'item__divider');
+  // const deletBtn = document.createElement('button');
+  // deletBtn.setAttribute('class', 'item__delete');
+  // deletBtn.innerHTML = `<i class="fas fa-trash-alt"></i>`;
 
-  itemRow.appendChild(item);
+  // const divider = document.createElement('div');
+  // divider.setAttribute('class', 'item__divider');
 
-  item.appendChild(name);
-  item.appendChild(deletBtn);
+  // itemRow.appendChild(item);
 
-  itemRow.appendChild(divider);
+  // item.appendChild(name);
+  // item.appendChild(deletBtn);
+
+  // itemRow.appendChild(divider);
 
   return itemRow;
 }
