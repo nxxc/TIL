@@ -1,12 +1,12 @@
 import PopUp from './popup.js';
-import Game from './game.js';
-
-const CARROT_SIZE = 5;
-const BUG_SIZE = 5;
-const GAME_DURATION_SEC = 5;
+import GameBuilder from './game.js';
 
 const gameFinishBanner = new PopUp();
-const game = new Game(GAME_DURATION_SEC, CARROT_SIZE, BUG_SIZE);
+const game = new GameBuilder()
+  .gameDuration(5)
+  .carrotCount(3)
+  .bugCount(3)
+  .build();
 
 game.setGameStopListener((reason) => {
   console.log(reason);
