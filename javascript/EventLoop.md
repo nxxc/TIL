@@ -33,3 +33,17 @@ CallStack : 함수 실행 순서 저장 (LIFO : Last In First Out)
 재귀함수 잘못 쓰면 지정된 콜 스택 사이즈 초과
 
 [자바스크립트 이벤트루프](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
+
+콜스택에서 작동 중인 것은 끝날 때 까지 보장된다
+
++ Render : Request Animation Frame, Render Tree, Layout, Paint 화면을 주기적으로 업데이트할 때
+
+    이벤트 루프는 브라우저마다 지정된 시간이 될때만 render를 실행
+
++ Micro task Queue :Promise, then mutation observer 에 저장된 콜백을 저장
+
+    이벤트루프는 micro task queue가 빌때까지 call stack에 넣음
+
++ Task Queue : Web APIs를 이용할 때 특정이벤트가 발생하면 콜백을 저장
+
+    이벤트루프는 Task queue에서 하나씩만 call stack에 넣음
