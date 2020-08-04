@@ -47,3 +47,26 @@ CallStack : 함수 실행 순서 저장 (LIFO : Last In First Out)
 + Task Queue : Web APIs를 이용할 때 특정이벤트가 발생하면 콜백을 저장
 
     이벤트루프는 Task queue에서 하나씩만 call stack에 넣음
+
+
+
+setTimeOut 은 Task queue를 이용하고 Promise 는 Micro Task Queue를 사용
+
+requestAnimationFrame() → 우리가 등록한 콜백 함수가 브라우저가 다음 렌더링이 발생하기 전에 실행을 보장
+
+```jsx
+const button = document.querySelector('button')
+button.addEventListener('click' , ()=>{
+	requestAnimationFrame(()=>{
+		document.body.style.backgroundColor = 'beige'		
+	})
+	requestAnimationFrame(()=>{
+		document.body.style.backgroundColor = 'orange'		
+	})
+	requestAnimationFrame(()=>{
+		document.body.style.backgroundColor = 'red'		
+	})
+})
+
+// red로 적용됨 렌더되기전에 한꺼번에 처리되기 때문
+```
