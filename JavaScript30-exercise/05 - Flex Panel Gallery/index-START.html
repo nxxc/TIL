@@ -28,7 +28,6 @@
       *:after {
         box-sizing: inherit;
       }
-
       .panels {
         min-height: 100vh;
         overflow: hidden;
@@ -80,6 +79,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        pointer-events: none;
       }
       .panel > *:first-child {
         transform: translateY(-100%);
@@ -140,19 +140,17 @@
       </div>
     </div>
     <script>
-      const panels = document.querySelectorAll('.panel');
+      const panels = document.querySelector('.panels');
       function toggleOpen(e) {
-        this.classList.toggle('open');
+        e.target.classList.toggle('open');
       }
       function toggleActive(e) {
         if (e.propertyName.includes('flex')) {
-          this.classList.toggle('open-active');
+          e.target.classList.toggle('open-active');
         }
       }
-      panels.forEach((panel) => panel.addEventListener('click', toggleOpen));
-      panels.forEach((panel) =>
-        panel.addEventListener('transitionend', toggleActive)
-      );
+      panels.addEventListener('click', toggleOpen);
+      panels.addEventListener('transitionend', toggleActive);
     </script>
   </body>
 </html>
