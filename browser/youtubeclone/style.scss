@@ -1,0 +1,70 @@
+.search {
+  display: flex;
+  justify-content: space-between;
+  width: auto;
+  height: 56px;
+  padding: 8px 16px;
+  div {
+    height: 40px;
+    button {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+svg {
+  fill: rgb(65, 65, 65);
+}
+
+.search__start {
+  display: flex;
+  button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+  }
+}
+
+.search__center {
+  align-self: center;
+  form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    input {
+      height: 24px;
+      width: 531px;
+    }
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  button {
+    display: flex;
+    background-color: #f8f8f8;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    width: 65px;
+    height: 30px;
+  }
+}
+
+.search__end {
+  display: flex;
+  width: 225px;
+  button {
+    background: transparent;
+    width: 40px;
+    height: 40px;
+    border: none;
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
