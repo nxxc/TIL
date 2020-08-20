@@ -1,8 +1,23 @@
 const url = 'https://yts.mx/api/v2/list_movies.json';
 
+const contents = document.querySelector('.contents');
+
 async function ax() {
-  const res = await axios.get(url);
-  console.log(res.data);
+  const { data } = await axios.get(url).then((res) => res.data);
+  const articles = await data.movies.map((movie) => {
+    const article = `
+      <article>
+          <img src="${movie.medium_cover_image}" alt="">
+          <span>${movie.title}</span>
+          <span>${movie.summary}</span>
+          <span>${movie.rating}</span>
+       </article>
+      `;
+    return article;
+  });
+  console.log(articles.join(''));
+  contents.innerHTML += articles.join('');
+  console.log(data);
 }
 
 ax();

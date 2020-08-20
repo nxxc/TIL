@@ -4,11 +4,14 @@ body {
   grid-template-areas:
     'header header'
     'nav contents';
-  overflow: hidden;
+  overflow: scroll;
+  font-weight: 400;
 }
 header {
   grid-area: header;
   background-color: white;
+  position: sticky;
+  top: 0;
 }
 svg {
   fill: rgb(96, 96, 96);
@@ -20,20 +23,27 @@ button:focus {
 nav {
   grid-area: nav;
   display: flex;
+  position: fixed;
+  top: 72px;
   flex-direction: column;
   height: 100vh;
   font-size: 14px;
-  font-weight: 400;
+
   color: rgb(3, 3, 3);
-  div {
+  a {
     display: flex;
     align-items: center;
     height: 40px;
     padding: 0 24px;
     cursor: pointer;
+    text-decoration: none;
     &:hover {
       background-color: rgb(242, 242, 242);
     }
+    &:visited {
+      color: rgb(3, 3, 3);
+    }
+
     svg {
       height: 24px;
       width: 24px;
@@ -50,9 +60,8 @@ nav {
   grid-auto-rows: 300px;
   grid-gap: 1rem;
   padding: 24px;
-  height: 100vh;
+  height: auto;
   background-color: rgb(249, 249, 249);
-  overflow-y: scroll;
   article {
     border: 1px solid black;
   }

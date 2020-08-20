@@ -1,21 +1,36 @@
 "use strict";
 
 var url = 'https://yts.mx/api/v2/list_movies.json';
+var contents = document.querySelector('.contents');
 
 function ax() {
-  var res;
+  var _ref, data, articles;
+
   return regeneratorRuntime.async(function ax$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
           _context.next = 2;
-          return regeneratorRuntime.awrap(axios.get(url));
+          return regeneratorRuntime.awrap(axios.get(url).then(function (res) {
+            return res.data;
+          }));
 
         case 2:
-          res = _context.sent;
-          console.log(res.data);
+          _ref = _context.sent;
+          data = _ref.data;
+          _context.next = 6;
+          return regeneratorRuntime.awrap(data.movies.map(function (movie) {
+            var article = "\n      <article>\n          <img src=\"".concat(movie.medium_cover_image, "\" alt=\"\">\n          <span>").concat(movie.title, "</span>\n          <span>").concat(movie.summary, "</span>\n          <span>").concat(movie.rating, "</span>\n       </article>\n      ");
+            return article;
+          }));
 
-        case 4:
+        case 6:
+          articles = _context.sent;
+          console.log(articles.join(''));
+          contents.innerHTML += articles.join('');
+          console.log(data);
+
+        case 10:
         case "end":
           return _context.stop();
       }

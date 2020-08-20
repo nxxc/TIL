@@ -2,12 +2,15 @@ body {
   display: grid;
   grid-template-columns: 240px 1fr;
   grid-template-areas: 'header header' 'nav contents';
-  overflow: hidden;
+  overflow: scroll;
+  font-weight: 400;
 }
 
 header {
   grid-area: header;
   background-color: white;
+  position: sticky;
+  top: 0;
 }
 
 svg {
@@ -21,26 +24,32 @@ button:focus {
 nav {
   grid-area: nav;
   display: flex;
+  position: fixed;
+  top: 72px;
   flex-direction: column;
   height: 100vh;
   font-size: 14px;
-  font-weight: 400;
   color: #030303;
 }
 
-nav div {
+nav a {
   display: flex;
   align-items: center;
   height: 40px;
   padding: 0 24px;
   cursor: pointer;
+  text-decoration: none;
 }
 
-nav div:hover {
+nav a:hover {
   background-color: #f2f2f2;
 }
 
-nav div svg {
+nav a:visited {
+  color: #030303;
+}
+
+nav a svg {
   height: 24px;
   width: 24px;
   margin-right: 24px;
@@ -54,9 +63,8 @@ nav div svg {
   grid-auto-rows: 300px;
   grid-gap: 1rem;
   padding: 24px;
-  height: 100vh;
+  height: auto;
   background-color: #f9f9f9;
-  overflow-y: scroll;
 }
 
 .contents article {
