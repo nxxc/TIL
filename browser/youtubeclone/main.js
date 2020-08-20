@@ -8,9 +8,9 @@ async function ax() {
     const article = `
       <article>
           <img src="${movie.medium_cover_image}" alt="">
-          <span>${movie.title}</span>
-          <span>${movie.summary}</span>
-          <span>${movie.rating}</span>
+          <span class='title'>${movie.title}</span>
+          <span class='summary'>${movie.summary}</span>
+          <span class='rating'>⭐️${movie.rating}</span>
        </article>
       `;
     return article;

@@ -20,7 +20,7 @@ function ax() {
           data = _ref.data;
           _context.next = 6;
           return regeneratorRuntime.awrap(data.movies.map(function (movie) {
-            var article = "\n      <article>\n          <img src=\"".concat(movie.medium_cover_image, "\" alt=\"\">\n          <span>").concat(movie.title, "</span>\n          <span>").concat(movie.summary, "</span>\n          <span>").concat(movie.rating, "</span>\n       </article>\n      ");
+            var article = "\n      <article>\n          <img src=\"".concat(movie.medium_cover_image, "\" alt=\"\">\n          <span class='title'>").concat(movie.title, "</span>\n          <span class='summary'>").concat(movie.summary, "</span>\n          <span class='rating'>\u2B50\uFE0F").concat(movie.rating, "</span>\n       </article>\n      ");
             return article;
           }));
 
