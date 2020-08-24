@@ -4,6 +4,8 @@ export default class Keywords {
     this.url = `https://jf3iw5iguk.execute-api.ap-northeast-2.amazonaws.com/dev/api/cats/keywords?q=`;
     this.html = '';
     this.data = '';
+    this.key = key;
+    this.value = value;
   }
   //
   showKeywords = () => {
@@ -24,9 +26,18 @@ export default class Keywords {
   };
 
   makeHtml = () => {
-    this.html = this.data.then((results) =>
-      results.map((res) => `<li>${res}</li>`).join('')
-    );
+    this.html = this.data.then((results) => {
+      if (results.length !== 0) {
+        return results.map((res) => `<li >${res}</li>`).join('');
+      } else if (results.length === 0) {
+        return `<li>검색결과없음</li>`;
+      }
+    });
+    return this;
+  };
+
+  showLoading = () => {
+    this.keywords.innerHTML = `<span>loading....<span>`;
     return this;
   };
 

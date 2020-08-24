@@ -4,43 +4,72 @@ export const $searchResults = document.querySelector('.search-results');
 
 import debounce from './components/debounce.js';
 import Keywords from './components/keywords.js';
-import { recommendationURL } from './components/data.js';
+import Results from './components/searchResults.js';
 
-const Recom = new Keywords();
+const keyCodes = Object.freeze({
+  arrowUp: 38,
+  arrowDown: 40,
+  Enter: 13,
+});
+
 class App {
   constructor() {
     this.key = '';
     this.value = '';
+
     this.isOpen = false;
+
+    this.Recom = new Keywords();
+    this.Results = new Results();
   }
 
   toggleIsOpen = () => (this.isOpen = !this.isOpen);
 
+  onArrowKeyPress = (e) => {
+    if (e.keyCode === 38) {
+      console.log('up');
+    } else if (e.keyCode === 40) {
+      console.log('down');
+    }
+  };
+
+  onEnterkeyPress = () => {
+    this.Results.showLoading().fetchData(this.value).makeHtml().render();
+  };
+
   onKeypress = (e) => {
-    if (this.isOpen) Recom.showKeywords();
+    if (this.isOpen) this.Recom.showKeywords();
     this.key = e.key;
     this.value = e.target.value;
     this.value !== '' &&
-      Recom.fetchData(this.value).makeHtml().showKeywords().render();
+      this.Recom.showLoading()
+        .fetchData(this.value)
+        .makeHtml()
+        .showKeywords()
+        .render();
+  };
+
+  handleKeypress = (e) => {
+    const { keyCode } = e;
+
+    switch (keyCode) {
+      case keyCodes.arrowUp:
+      case keyCodes.arrowDown:
+        this.onArrowKeyPress(e);
+        break;
+      case keyCodes.Enter:
+        this.onEnterkeyPress(e);
+      default:
+        this.onKeypress(e);
+    }
   };
 }
 const Cats = new App();
-$keyword.addEventListener('keyup', debounce(Cats.onKeypress, 200));
-$keywords.addEventListener('click', (e) => {
-  $keyword.value = e.target.innerText;
-});
-$keyword.addEventListener('keydown', (e) => {
-  if (e.keyCode === 38) {
-    console.log('up');
-    console.dir($keywords.childNodes[0].onblur);
-  } else if (e.keyCode === 40) {
-    console.log('down');
-  }
-});
+$keyword.addEventListener('keyup', debounce(Cats.handleKeypress, 200));
 
 $keyword.addEventListener('blur', () => {
-  Recom.hideKeywords();
+  Cats.Recom.hideKeywords();
 });
-$keyword.addEventListener('focus', (e) => {
-  Cats.onKeypress(e);
+$keywords.addEventListener('click', (e) => {
+  $keyword.value = e.target.innerText;
 });
