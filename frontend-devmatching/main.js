@@ -37,10 +37,8 @@ class App {
     this.Results.showLoading().fetchData(this.value).makeHtml().render();
   };
 
-  onKeypress = (e) => {
+  onKeypress = () => {
     if (this.isOpen) this.Recom.showKeywords();
-    this.key = e.key;
-    this.value = e.target.value;
     this.value !== '' &&
       this.Recom.showLoading()
         .fetchData(this.value)
@@ -51,16 +49,17 @@ class App {
 
   handleKeypress = (e) => {
     const { keyCode } = e;
-
+    this.key = e.key;
+    this.value = e.target.value;
     switch (keyCode) {
       case keyCodes.arrowUp:
       case keyCodes.arrowDown:
-        this.onArrowKeyPress(e);
+        this.onArrowKeyPress();
         break;
       case keyCodes.Enter:
-        this.onEnterkeyPress(e);
+        this.onEnterkeyPress();
       default:
-        this.onKeypress(e);
+        this.onKeypress();
     }
   };
 }
