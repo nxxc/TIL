@@ -72,3 +72,19 @@ $keyword.addEventListener('blur', () => {
 $keywords.addEventListener('click', (e) => {
   $keyword.value = e.target.innerText;
 });
+
+const ob = new MutationObserver((mutations) => {
+  console.log('mutations:', mutations);
+  mutations.forEach((v) => {
+    if (v.type === 'childList') {
+      const list = v.addedNodes;
+      console.log([...list]);
+    }
+  });
+});
+
+ob.observe($keywords, {
+  attributes: false,
+  childList: true,
+  characterData: false,
+});
