@@ -1,16 +1,16 @@
-// const tickets = [
-//   ['ICN', 'JFK'],
-//   ['HND', 'IAD'],
-//   ['JFK', 'HND'],
-// ];
-
 const tickets = [
-  ['ICN', 'SFO'],
-  ['ICN', 'ATL'],
-  ['SFO', 'ATL'],
-  ['ATL', 'ICN'],
-  ['ATL', 'SFO'],
+  ['ICN', 'JFK'],
+  ['HND', 'IAD'],
+  ['JFK', 'HND'],
 ];
+
+// const tickets = [
+//   ['ICN', 'SFO'],
+//   ['ICN', 'ATL'],
+//   ['SFO', 'ATL'],
+//   ['ATL', 'ICN'],
+//   ['ATL', 'SFO'],
+// ];
 
 const Graph = new Map();
 const addPort = (ports) => ports.forEach((v) => Graph.set(v, []));
