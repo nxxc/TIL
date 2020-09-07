@@ -1,9 +1,9 @@
 function solution(tickets) {
   let answer = [];
-  let count = 0;
   let startICN = tickets.filter((ticket) => ticket[0] === 'ICN');
-
-  function reccr(start, visited) {
+  let count = 0;
+  function recurr(start, visited) {
+    count++;
     visited.push(start);
 
     let tempPath = Array.from(visited);
@@ -17,9 +17,9 @@ function solution(tickets) {
       (ticket) => !tempPath.includes(ticket) && ticket[0] === start[1]
     );
 
-    nextList.forEach((next) => reccr(next, tempPath));
+    nextList.forEach((next) => recurr(next, tempPath));
   }
-  startICN.forEach((icn) => reccr(icn, []));
+  startICN.forEach((icn) => recurr(icn, []));
   answer.sort();
   let res = [];
   answer[0].forEach((v, i) => {
