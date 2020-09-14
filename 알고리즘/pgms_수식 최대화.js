@@ -19,9 +19,9 @@ function solution(expression) {
   ];
   const results = [];
 
-  for (const prioritiy of priorities) {
+  for (const priority of priorities) {
     const splitted = expression.split(/([\*\+-])/);
-    for (const order of prioritiy) {
+    for (const order of priority) {
       while (splitted.includes(order)) {
         const orderIndex = splitted.indexOf(order);
         const num1 = splitted[orderIndex - 1];
@@ -38,3 +38,5 @@ function solution(expression) {
 
   return Math.max(...results);
 }
+
+// splice 활용해서 3개씩 끊어서 계산
