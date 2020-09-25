@@ -1,34 +1,33 @@
 function solution(tickets) {
-  let answer = [];
-  let startICN = tickets.filter((ticket) => ticket[0] === 'ICN');
-  let count = 0;
-  function recurr(start, visited) {
-    count++;
-    visited.push(start);
-
-    let tempPath = Array.from(visited);
-
-    if (tempPath.length === tickets.length) {
-      answer.push(tempPath);
+  var answer = [];
+  let used = Array.from(tickets, () => false);
+  tickets.sort();
+  for (let i = 0; i < tickets.length; i++) {
+    if (tickets[i][0] === 'ICN') {
+      used[i] = true;
+      search(tickets[i], used, []);
+      used[i] = false;
+    }
+  }
+  function search(start, check, route) {
+    route.push(start[0]);
+    if (check.every((v) => v === true)) {
+      route.push(start[1]);
+      answer.push(route);
       return;
     }
-
-    const nextList = tickets.filter(
-      (ticket) => !tempPath.includes(ticket) && ticket[0] === start[1]
-    );
-
-    nextList.forEach((next) => recurr(next, tempPath));
+    tickets.forEach((ticket, i) => {
+      if (ticket[0] === start[1] && !check[i]) {
+        const newCheck = Array.from(check);
+        const newArr = Array.from(route);
+        newCheck[i] = true;
+        search(ticket, newCheck, newArr);
+      }
+    });
   }
-  startICN.forEach((icn) => recurr(icn, []));
-  answer.sort();
-  let res = [];
-  answer[0].forEach((v, i) => {
-    if (i === tickets.length - 1) {
-      res.push(v[0]);
-      res.push(v[1]);
-    } else {
-      res.push(v[0]);
-    }
-  });
-  return res;
+  return answer[0];
 }
+
+// 1. 티켓 돌면서 인천출발이면 search 시작 (다른 출발점도 있을 수 있으니 used[i] = false; 로 다음포문에선 초기화)
+// 2. search함수 => 모든 티켓이 사용됐으면 route 배열을 경로화 해서 answer에 저장
+// 3. 티켓들 돌면서 다음 목적지로 가능하고 사용하지 않은 (ticket[0] === start[1] && !check[i]) 티켓들로 다시 search 재귀실행
