@@ -1,3 +1,5 @@
+//v1
+
 function solution(S) {
   // write your code in JavaScript (Node.js 8.9.4)
   const stack = [];
@@ -18,6 +20,8 @@ function solution(S) {
 
   return stack.length ? 0 : 1;
 }
+
+//v2
 function solution(S) {
   // write your code in JavaScript (Node.js 8.9.4)
   if (!S.length) return 1;
@@ -39,3 +43,5 @@ function solution(S) {
 
   return stack.length ? 0 : 1;
 }
+
+// 빈 문자열일때 경우 추가
