@@ -4,9 +4,64 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      body {
+        height: 100%;
+        width: 100%;
+      }
+      .new {
+        width: 300px;
+        height: 300px;
+        text-align: center;
+        background-color: wheat;
+        margin-bottom: 10px;
+      }
+      #lazy {
+        width: auto;
+        height: 300px;
+      }
+      .placeholder {
+        width: 300px;
+        height: 300px;
+        background-color: grey;
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div class="new"></div>
+      <div class="new"></div>
+      <div class="new"></div>
+      <div class="new"></div>
+      <div class="placeholder">
+        <img id="lazy" src=" " alt="" data-src ="./noPhoto.jpeg""/>
+      </div>
+    </div>
     <script type="module" src="./src/main.js"></script>
+    <div id="infinite"></div>
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        console.log('Loaded!');
+      });
+      const $target = document.querySelector('#root');
+      const infinite = document.querySelector('#infinite');
+      const lazy = document.querySelector('.placeholder');
+      const option = {
+        threshold: 1,
+      };
+
+      const _callback = (entry) => {
+        entry.forEach((v) => {
+          console.log(v);
+          if (v.intersectionRatio === 1) {
+            v.target.children[0].src = v.target.children[0].dataset.src;
+            console.log(v.intersectionRatio);
+            v.target.src = v.target.dataset.src;
+          }
+        });
+      };
+      const io = new IntersectionObserver(_callback, option);
+      io.observe(lazy);
+    </script>
   </body>
 </html>

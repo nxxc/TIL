@@ -26,7 +26,7 @@ function createItem(text) {
   itemRow.setAttribute('class', 'item__row');
   itemRow.setAttribute('data-id', id);
   itemRow.addEventListener('click', (e) => {
-    if (itemRow.dataset.id) {
+    if (itemRow.dataset.id && e.target.nodeName === 'I') {
       itemRow.remove();
     }
   });
