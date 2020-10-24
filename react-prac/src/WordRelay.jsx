@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 
 function WordRelay(props) {
+  console.log(props)
   const [word, setWord] = useState('구구단');
   const [value, setValue] = useState('');
   const [result, setResult] = useState('');

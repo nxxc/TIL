@@ -18,8 +18,6 @@ export default class SearchInput {
     $searchInput.addEventListener('focusin', (e) => {
       e.target.value = '';
     });
-
-    // console.log("SearchInput created.", this);
   }
   render() {}
 }
